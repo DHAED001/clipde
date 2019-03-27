@@ -23,7 +23,7 @@ $body.Add([pscustomobject] @{"Heading" = "Project Name"; "data" = "Welcome to my
 $body.Add([pscustomobject] @{"Heading" = "Brand Name "; "data" = "Ziplock"}) | Out-Null
 $body.Add([pscustomobject] @{"Heading" = "Brand Details "; "data" = "Ziploc is a brand of reusable, re-sealable zipper storage bags and containers originally developed and test marketed by The Dow Chemical Company in 1968 and now produced by S. C. Johnson & Son. The plastic bags and containers come in different sizes for use with different products.."}) | Out-Null
 $body.Add([pscustomobject] @{"Heading" = "Product Type "; "data" = "Storage Solution"}) | Out-Null
-$body.Add([pscustomobject] @{"Heading" = "Website "; "data" = "	http://www.ziploc.com/"}) | Out-Null
+$body.Add([pscustomobject] @{"Heading" = "Website "; "data" = "	https://www.ziploc.com/"}) | Out-Null
 
 
 #Convert object to HTML and overwrite existing index
