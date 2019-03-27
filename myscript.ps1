@@ -8,10 +8,10 @@ $header = @"
 "@
 
 #Install IIS
-#Install-WindowsFeature -name Web-Server
+Install-WindowsFeature -name Web-Server
 
 #Query Azure Instance Metadata service
-#$metadata = Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-08-01 -Method get
+$metadata = Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-08-01 -Method get
 
 #Create object containing data to render 
 $body = New-Object System.Collections.ArrayList
@@ -28,4 +28,4 @@ $body.Add([pscustomobject] @{"Heading" = "Website "; "data" = "	http://www.ziplo
 
 #Convert object to HTML and overwrite existing index
 $HTML = $body | ConvertTo-Html -Title "WebServer Details"-Head $header
-$HTML | Out-File -FilePath "C:\temp\index.html" -Force
+$HTML | Out-File -FilePath "C:\inetpub\wwwroot\index.html" -Force
