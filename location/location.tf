@@ -126,8 +126,8 @@ resource "azurerm_virtual_machine_scale_set" "web_server" {
 
     settings = <<SETTINGS
     {
-      "fileUris": ["https://raw.githubusercontent.com/DHAED001/clipde/master/site.ps1"],
-      "commandToExecute": "start powershell -ExecutionPolicy Unrestricted -File site.ps1"
+      "fileUris": ["https://raw.githubusercontent.com/DHAED001/clipde/master/myscript.ps1"],
+      "commandToExecute": "start powershell -ExecutionPolicy Unrestricted -File myscript.ps1"
     }
     SETTINGS
 
