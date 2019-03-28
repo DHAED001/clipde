@@ -188,7 +188,7 @@ resource "azurerm_virtual_machine" "jump_server" {
   location                     = "${var.jump_server_location}"
   resource_group_name          = "${azurerm_resource_group.jump_server_rg.name}"  
   network_interface_ids        = ["${azurerm_network_interface.jump_server_nic.id}"]
-  vm_size                      = "Standard_B1s"
+  vm_size                      = "Standard_DS2_v2"
 
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
