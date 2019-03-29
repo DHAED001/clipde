@@ -22,12 +22,33 @@ provider "azurerm" {
   client_secret   = "${var.client_secret}"
 }
 
+variable "resource_group_name" { }
 
-resource "azurerm_resource_group" "web_server_rg" {
-    name     = "${var.resource_prefix}"
-    location = "eastus"
+module "windowsservers" {
+source = "github.com/Azure/terraform-azurerm-compute.git"
+location = "West US 2"
+vm_hostname = "mywinvm"
+admin_password = "ComplxP@ssw0rd!"
+vm_os_simple = "WindowsServer"
+is_windows_image = true
+public_ip_dns = ["winsimplevmips"] // change to a unique name per datacenter region
+vnet_subnet_id = "${module.network.vnet_subnets[0]}"
+}
 
-    tags {
-        environment = "Terraform Demo"
-    }
+module "network" {
+    source = "Azure/network/azurerm"
+    location = "East US 2"
+    resource_group_name = "myResourceGroup"
+}
+
+output "vm_public_name" {
+    value = "${module.mycompute.public_ip_dns_name}"
+}
+
+output "vm_public_ip" {
+    value = "${module.mycompute.public_ip_address}"
+}
+
+output "vm_private_ips" {
+    value = "${module.mycompute.network_interface_private_ip}"
 }
